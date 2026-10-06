@@ -32,6 +32,7 @@ const SITE_URL  = "https://chineselaw.kr";
 
 const SITE_TITLE_KO = "중국 법률 실무 지식 베이스";
 const DISCLAIMER_KO = "면책 고지: 이 웹사이트의 자료는 일반 정보 제공 목적으로만 제공되며 법률 자문을 구성하지 않습니다. 이 웹사이트를 열람하거나 연락하는 행위만으로 변호사-의뢰인 관계가 형성되지 않습니다.";
+const CONTACT_NOTICE_KO = "개인 정보 또는 기밀 정보가 포함된 문의는 chineselaw[at]protonmail.com으로 직접 이메일을 보내 주시기 바랍니다.";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -169,6 +170,7 @@ ${jsonLdStr}
       </div>
     </article>
     <p class="small">${DISCLAIMER_KO}</p>
+    <p class="small">${CONTACT_NOTICE_KO}</p>
   </div>
 </body>
 </html>`;
