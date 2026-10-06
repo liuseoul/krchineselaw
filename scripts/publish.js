@@ -28,8 +28,7 @@ const ROOT      = path.join(__dirname, "..");
 const SRC_DIR   = path.join(ROOT, "articles-src");
 const DATA_FILE = path.join(ROOT, "articles-data.js");
 
-const SITE_URL  = "https://chineselaw.kr";   // this site
-const MAIN_SITE = "https://chinese.law";     // multilingual master site
+const SITE_URL  = "https://chineselaw.kr";
 
 const SITE_TITLE_KO = "중국 법률 실무 지식 베이스";
 const DISCLAIMER_KO = "면책 고지: 이 웹사이트의 자료는 일반 정보 제공 목적으로만 제공되며 법률 자문을 구성하지 않습니다. 이 웹사이트를 열람하거나 연락하는 행위만으로 변호사-의뢰인 관계가 형성되지 않습니다.";
@@ -103,20 +102,9 @@ function saveArticlesData(articles) {
 function makeArticleHtml(slug, title, bodyHtml, date, description, entry) {
   const canonical = `${SITE_URL}/articles/${slug}.html`;
 
-  // hreflang: ko → this site, others → chinese.law
   const hrefLangLines = [
     `  <link rel="alternate" hreflang="ko" href="${SITE_URL}/articles/${slug}.html" />`,
-    `  <link rel="alternate" hreflang="en" href="${MAIN_SITE}/articles/${slug}.html" />`,
   ];
-  if (entry.ja && entry.ja.title)
-    hrefLangLines.push(`  <link rel="alternate" hreflang="ja" href="${MAIN_SITE}/ja/articles/${slug}.html" />`);
-  if (entry.fr && entry.fr.title)
-    hrefLangLines.push(`  <link rel="alternate" hreflang="fr" href="${MAIN_SITE}/fr/articles/${slug}.html" />`);
-  if (entry.ru && entry.ru.title)
-    hrefLangLines.push(`  <link rel="alternate" hreflang="ru" href="${MAIN_SITE}/ru/articles/${slug}.html" />`);
-  if (entry.es && entry.es.title)
-    hrefLangLines.push(`  <link rel="alternate" hreflang="es" href="${MAIN_SITE}/es/articles/${slug}.html" />`);
-  hrefLangLines.push(`  <link rel="alternate" hreflang="x-default" href="${MAIN_SITE}/articles/${slug}.html" />`);
 
   // JSON-LD
   const jsonLdObj = {
@@ -164,21 +152,11 @@ ${jsonLdStr}
     .backlink{display:inline-block;margin-bottom:14px;color:#374151;text-decoration:none;font-size:0.95rem;}
     .backlink:hover{text-decoration:underline;}
     .small{font-size:0.9rem;color:#6b7280;margin-top:20px;}
-    .langbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
-    .langbar span{font-size:0.8rem;color:#9ca3af;margin-right:2px;}
-    .langtag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:0.82rem;font-weight:700;
-             text-decoration:none;border:1px solid #d1d5db;color:#374151;background:#fff;letter-spacing:.04em;}
-    .langtag:hover{background:#f3f4f6;border-color:#9ca3af;}
-    .langtag.current{background:#111827;color:#fff;border-color:#111827;cursor:default;}
     @media(min-width:760px){.container{padding:32px 24px 64px;}h1{font-size:2rem;}}
   </style>
 </head>
 <body>
   <div class="container">
-    <nav class="langbar" id="langbar" aria-label="언어">
-      <span>언어:</span>
-      <!-- JS로 채워짐 -->
-    </nav>
     <a class="backlink" href="/index.html">&larr; 홈</a>
     <article class="card">
       <h1>${title}</h1>
@@ -189,31 +167,6 @@ ${jsonLdStr}
     </article>
     <p class="small">${DISCLAIMER_KO}</p>
   </div>
-  <script src="../articles-data.js"></script>
-  <script>
-    (function(){
-      var SLUG="${slug}";
-      var MAIN="${MAIN_SITE}";
-      var bar=document.getElementById("langbar");
-      var entry=ARTICLES_DATA.find(function(a){return a.slug===SLUG;});
-      if(!entry) return;
-      var defs=[
-        {l:"en",label:"EN",href:MAIN+"/articles/"+SLUG+".html"},
-        {l:"ko",label:"KR",href:"/articles/"+SLUG+".html"},
-        {l:"ja",label:"JP",href:MAIN+"/ja/articles/"+SLUG+".html"},
-        {l:"fr",label:"FR",href:MAIN+"/fr/articles/"+SLUG+".html"},
-        {l:"ru",label:"RU",href:MAIN+"/ru/articles/"+SLUG+".html"},
-        {l:"es",label:"ES",href:MAIN+"/es/articles/"+SLUG+".html"},
-      ];
-      var links=defs.filter(function(d){
-        return d.l==="en"||d.l==="ko"||(entry[d.l]&&entry[d.l].title);
-      }).map(function(d){
-        var cls=d.l==="ko"?" current":"";
-        return '<a class="langtag'+cls+'" href="'+d.href+'">'+d.label+'</a>';
-      }).join("");
-      bar.innerHTML='<span>언어:</span>'+links;
-    })();
-  </script>
 </body>
 </html>`;
 }

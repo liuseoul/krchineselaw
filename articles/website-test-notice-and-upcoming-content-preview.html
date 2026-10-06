@@ -7,12 +7,6 @@
   <meta name="description" content="이 페이지는 웹사이트 테스트 및 게시 검토를 위해 작성된 시험용 페이지입니다. 이 글의 목적은 페이지 레이아웃, 텍스트 표시, 그리고 게시 기능이 정상적으로 작동하는지 확인하는 데 있습니다. 본 문서는 실질적이거나 전문적인 내용의 글을 목적으로 작성된 것은 아닙니다. 가까..." />
   <link rel="canonical" href="https://chineselaw.kr/articles/website-test-notice-and-upcoming-content-preview.html" />
   <link rel="alternate" hreflang="ko" href="https://chineselaw.kr/articles/website-test-notice-and-upcoming-content-preview.html" />
-  <link rel="alternate" hreflang="en" href="https://chinese.law/articles/website-test-notice-and-upcoming-content-preview.html" />
-  <link rel="alternate" hreflang="ja" href="https://chinese.law/ja/articles/website-test-notice-and-upcoming-content-preview.html" />
-  <link rel="alternate" hreflang="fr" href="https://chinese.law/fr/articles/website-test-notice-and-upcoming-content-preview.html" />
-  <link rel="alternate" hreflang="ru" href="https://chinese.law/ru/articles/website-test-notice-and-upcoming-content-preview.html" />
-  <link rel="alternate" hreflang="es" href="https://chinese.law/es/articles/website-test-notice-and-upcoming-content-preview.html" />
-  <link rel="alternate" hreflang="x-default" href="https://chinese.law/articles/website-test-notice-and-upcoming-content-preview.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="웹사이트 테스트 공지 및 예정 콘텐츠 미리보기" />
   <meta property="og:description" content="이 페이지는 웹사이트 테스트 및 게시 검토를 위해 작성된 시험용 페이지입니다. 이 글의 목적은 페이지 레이아웃, 텍스트 표시, 그리고 게시 기능이 정상적으로 작동하는지 확인하는 데 있습니다. 본 문서는 실질적이거나 전문적인 내용의 글을 목적으로 작성된 것은 아닙니다. 가까..." />
@@ -57,21 +51,11 @@
     .backlink{display:inline-block;margin-bottom:14px;color:#374151;text-decoration:none;font-size:0.95rem;}
     .backlink:hover{text-decoration:underline;}
     .small{font-size:0.9rem;color:#6b7280;margin-top:20px;}
-    .langbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
-    .langbar span{font-size:0.8rem;color:#9ca3af;margin-right:2px;}
-    .langtag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:0.82rem;font-weight:700;
-             text-decoration:none;border:1px solid #d1d5db;color:#374151;background:#fff;letter-spacing:.04em;}
-    .langtag:hover{background:#f3f4f6;border-color:#9ca3af;}
-    .langtag.current{background:#111827;color:#fff;border-color:#111827;cursor:default;}
     @media(min-width:760px){.container{padding:32px 24px 64px;}h1{font-size:2rem;}}
   </style>
 </head>
 <body>
   <div class="container">
-    <nav class="langbar" id="langbar" aria-label="언어">
-      <span>언어:</span>
-      <!-- JS로 채워짐 -->
-    </nav>
     <a class="backlink" href="/index.html">&larr; 홈</a>
     <article class="card">
       <h1>웹사이트 테스트 공지 및 예정 콘텐츠 미리보기</h1>
@@ -82,30 +66,5 @@
     </article>
     <p class="small">면책 고지: 이 웹사이트의 자료는 일반 정보 제공 목적으로만 제공되며 법률 자문을 구성하지 않습니다. 이 웹사이트를 열람하거나 연락하는 행위만으로 변호사-의뢰인 관계가 형성되지 않습니다.</p>
   </div>
-  <script src="../articles-data.js"></script>
-  <script>
-    (function(){
-      var SLUG="website-test-notice-and-upcoming-content-preview";
-      var MAIN="https://chinese.law";
-      var bar=document.getElementById("langbar");
-      var entry=ARTICLES_DATA.find(function(a){return a.slug===SLUG;});
-      if(!entry) return;
-      var defs=[
-        {l:"en",label:"EN",href:MAIN+"/articles/"+SLUG+".html"},
-        {l:"ko",label:"KR",href:"/articles/"+SLUG+".html"},
-        {l:"ja",label:"JP",href:MAIN+"/ja/articles/"+SLUG+".html"},
-        {l:"fr",label:"FR",href:MAIN+"/fr/articles/"+SLUG+".html"},
-        {l:"ru",label:"RU",href:MAIN+"/ru/articles/"+SLUG+".html"},
-        {l:"es",label:"ES",href:MAIN+"/es/articles/"+SLUG+".html"},
-      ];
-      var links=defs.filter(function(d){
-        return d.l==="en"||d.l==="ko"||(entry[d.l]&&entry[d.l].title);
-      }).map(function(d){
-        var cls=d.l==="ko"?" current":"";
-        return '<a class="langtag'+cls+'" href="'+d.href+'">'+d.label+'</a>';
-      }).join("");
-      bar.innerHTML='<span>언어:</span>'+links;
-    })();
-  </script>
 </body>
 </html>

@@ -38,12 +38,6 @@
     .pubtitle:hover { text-decoration:underline; }
     .pubmeta { margin-top:4px; font-size:0.92rem; color:#6b7280; }
     .small { font-size:0.92rem; color:#6b7280; }
-    .langbar { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
-    .langbar span { font-size:0.8rem; color:#9ca3af; margin-right:2px; }
-    .langtag { display:inline-block; padding:3px 9px; border-radius:5px; font-size:0.82rem; font-weight:700;
-               text-decoration:none; border:1px solid #d1d5db; color:#374151; background:#fff; letter-spacing:.04em; }
-    .langtag:hover { background:#f3f4f6; border-color:#9ca3af; }
-    .langtag.current { background:#111827; color:#fff; border-color:#111827; cursor:default; }
     .msgbtn-wrap { display:flex; justify-content:flex-end; margin-bottom:12px; }
     .msgbtn { padding:9px 20px; background:#1d4ed8; color:#fff; border:none; border-radius:8px; font-size:0.95rem; font-weight:600; cursor:pointer; }
     .msgbtn:hover { background:#1e40af; }
@@ -65,17 +59,6 @@
 </head>
 <body>
   <div class="container">
-
-    <!-- 언어 전환 (다른 언어는 chinese.law로 이동) -->
-    <nav class="langbar" aria-label="언어">
-      <span>언어:</span>
-      <a class="langtag" href="https://chinese.law/">EN</a>
-      <a class="langtag current" href="/">KR</a>
-      <a class="langtag" href="https://chinese.law/ja/">JP</a>
-      <a class="langtag" href="https://chinese.law/fr/">FR</a>
-      <a class="langtag" href="https://chinese.law/ru/">RU</a>
-      <a class="langtag" href="https://chinese.law/es/">ES</a>
-    </nav>
 
     <div class="msgbtn-wrap">
       <button class="msgbtn" onclick="openMsgModal()">메시지 남기기</button>
@@ -118,7 +101,7 @@
         <a href="publications.html">모든 발행물 보기</a>
       </div>
       <ul class="pubs" id="recent-publications"><!-- JS로 채워짐 --></ul>
-      <p class="small" style="margin-top:10px;">다국어 버전: <a href="https://chinese.law/" style="color:#6b7280;">chinese.law</a>에서 영어·일본어·프랑스어·러시아어·스페인어로 이용 가능합니다.</p>
+      <p class="small" style="margin-top:10px;">새 기사 등록 시 자동으로 업데이트됩니다.</p>
     </section>
 
     <section class="small">면책 고지: 이 웹사이트의 자료는 일반 정보 제공 목적으로만 제공되며 법률 자문을 구성하지 않습니다. 이 웹사이트를 열람하거나 연락하는 행위만으로 변호사-의뢰인 관계가 형성되지 않습니다.</section>
