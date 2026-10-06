@@ -156,6 +156,7 @@ ${jsonLdStr}
     .backlink{display:inline-block;margin-bottom:14px;color:#374151;text-decoration:none;font-size:0.95rem;}
     .backlink:hover{text-decoration:underline;}
     .small{font-size:0.9rem;color:#6b7280;margin-top:20px;}
+    .contact-notice{font-size:0.88rem;color:#1d4ed8;background:#eff6ff;border-left:3px solid #3b82f6;border-radius:0 6px 6px 0;padding:10px 14px;margin-top:12px;font-weight:500;}
     @media(min-width:760px){.container{padding:32px 24px 64px;}h1{font-size:2rem;}}
   </style>
 </head>
@@ -170,7 +171,7 @@ ${jsonLdStr}
       </div>
     </article>
     <p class="small">${DISCLAIMER_KO}</p>
-    <p class="small">${CONTACT_NOTICE_KO}</p>
+    <p class="contact-notice">${CONTACT_NOTICE_KO}</p>
   </div>
 </body>
 </html>`;
