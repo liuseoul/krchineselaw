@@ -130,6 +130,9 @@ function makeArticleHtml(slug, title, bodyHtml, date, description, entry) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title} | ${SITE_TITLE_KO}</title>
   <meta name="description" content="${escapeAttr(description)}" />
+  <meta name="keywords" content="${escapeAttr((entry.tags || []).join(", "))}" />
+  <meta name="author" content="${escapeAttr(SITE_TITLE_KO)}" />
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="${canonical}" />
 ${hrefLangLines.join("\n")}
   <meta property="og:type" content="article" />
