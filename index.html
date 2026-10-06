@@ -1,17 +1,208 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>chineselaw.kr</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>중국 법률 실무 지식 베이스 | chineselaw.kr</title>
+  <meta name="description" content="중국 분쟁 해결, 법률 컨설팅, 투자 컨설팅 및 대리 업무에 관한 외국 기업·개인을 위한 실무 지침." />
+  <link rel="canonical" href="https://chineselaw.kr/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="중국 법률 실무 지식 베이스" />
+  <meta property="og:description" content="중국 분쟁 해결, 법률 컨설팅, 투자 컨설팅 및 대리 업무에 관한 외국 기업·개인을 위한 실무 지침." />
+  <meta property="og:url" content="https://chineselaw.kr/" />
+  <meta property="og:site_name" content="중국 법률 실무 지식 베이스" />
+  <meta property="og:locale" content="ko_KR" />
   <style>
-    html, body { height: 100%; margin: 0; }
-    body { display: flex; align-items: center; justify-content: center;
-           font-family: system-ui, sans-serif; background: #fff; color: #111; }
-    @media (prefers-color-scheme: dark) { body { background: #111; color: #eee; } }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.6; color:#1f2937; background:#f9fafb; }
+    .container { max-width:900px; margin:0 auto; padding:24px 16px 48px; }
+    .card { border:1px solid #e5e7eb; border-radius:12px; padding:20px; margin-bottom:16px; }
+    .card-green  { background:#edf5ed; border-color:#c9e4c9; }
+    .card-red    { background:#f5edee; border-color:#e4c9cc; }
+    .card-yellow { background:#f5f5ed; border-color:#e4e4c9; }
+    .card-blue   { background:#edeef5; border-color:#c9cce4; }
+    h1 { font-size:1.8rem; margin:0 0 8px 0; line-height:1.25; }
+    h2 { font-size:1.1rem; margin:0 0 8px 0; }
+    p { margin:0 0 10px 0; }
+    ul { margin:8px 0 0 20px; padding:0; }
+    li { margin-bottom:6px; }
+    .subtitle { color:#4b5563; margin-bottom:0; }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .linkbtn { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; border:1px solid #d1d5db; color:#111827; background:#fff; font-weight:600; }
+    .linkbtn:hover { border-color:#9ca3af; background:#f9fafb; }
+    .sectionhead { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:8px; }
+    .sectionhead a { font-size:0.95rem; color:#111827; text-decoration:underline; white-space:nowrap; }
+    .pubs { list-style:none; margin:10px 0 0 0; padding:0; }
+    .pubs li { padding:10px 0; border-bottom:1px solid #d5d8ea; margin:0; }
+    .pubs li:last-child { border-bottom:none; }
+    .pubtitle { text-decoration:none; color:#111827; font-weight:700; }
+    .pubtitle:hover { text-decoration:underline; }
+    .pubmeta { margin-top:4px; font-size:0.92rem; color:#6b7280; }
+    .small { font-size:0.92rem; color:#6b7280; }
+    .langbar { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+    .langbar span { font-size:0.8rem; color:#9ca3af; margin-right:2px; }
+    .langtag { display:inline-block; padding:3px 9px; border-radius:5px; font-size:0.82rem; font-weight:700;
+               text-decoration:none; border:1px solid #d1d5db; color:#374151; background:#fff; letter-spacing:.04em; }
+    .langtag:hover { background:#f3f4f6; border-color:#9ca3af; }
+    .langtag.current { background:#111827; color:#fff; border-color:#111827; cursor:default; }
+    .msgbtn-wrap { display:flex; justify-content:flex-end; margin-bottom:12px; }
+    .msgbtn { padding:9px 20px; background:#1d4ed8; color:#fff; border:none; border-radius:8px; font-size:0.95rem; font-weight:600; cursor:pointer; }
+    .msgbtn:hover { background:#1e40af; }
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:1000; align-items:center; justify-content:center; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:#fff; border-radius:14px; padding:28px 24px 24px; width:90%; max-width:440px; position:relative; box-shadow:0 8px 32px rgba(0,0,0,.18); }
+    .modal-close { position:absolute; top:10px; right:14px; background:none; border:none; font-size:1.5rem; color:#6b7280; cursor:pointer; line-height:1; padding:0; }
+    .modal-close:hover { color:#111; }
+    .modal-box h3 { margin:0 0 18px 0; font-size:1.1rem; }
+    .modal-box label { display:block; font-size:0.92rem; font-weight:600; color:#374151; margin-bottom:3px; }
+    .modal-field { width:100%; box-sizing:border-box; padding:8px 10px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:7px; font-size:0.95rem; font-family:inherit; }
+    .modal-field:focus { outline:none; border-color:#6b7280; }
+    .modal-send { width:100%; padding:10px; background:#111827; color:#fff; border:none; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; margin-top:2px; }
+    .modal-send:hover { background:#374151; }
+    .modal-send:disabled { background:#9ca3af; cursor:default; }
+    .modal-success { text-align:center; padding:24px 0 8px; color:#166534; font-weight:600; font-size:1rem; }
+    @media (min-width:760px){ .container{ padding:32px 20px 56px; } h1{ font-size:2.1rem; } }
   </style>
 </head>
 <body>
-  <h1>hello the world</h1>
+  <div class="container">
+
+    <!-- 언어 전환 (다른 언어는 chinese.law로 이동) -->
+    <nav class="langbar" aria-label="언어">
+      <span>언어:</span>
+      <a class="langtag" href="https://chinese.law/">EN</a>
+      <a class="langtag current" href="/">KR</a>
+      <a class="langtag" href="https://chinese.law/ja/">JP</a>
+      <a class="langtag" href="https://chinese.law/fr/">FR</a>
+      <a class="langtag" href="https://chinese.law/ru/">RU</a>
+      <a class="langtag" href="https://chinese.law/es/">ES</a>
+    </nav>
+
+    <div class="msgbtn-wrap">
+      <button class="msgbtn" onclick="openMsgModal()">메시지 남기기</button>
+    </div>
+
+    <!-- 1) 히어로 — 연한 회록 -->
+    <section class="card card-green">
+      <h1>중국 법률 실무 지식 베이스</h1>
+      <p class="subtitle">중국 분쟁 해결, 법률 컨설팅, 투자 컨설팅 및 대리 업무에 관한 외국 기업·개인을 위한 실무 지침.</p>
+      <div class="links">
+        <a class="linkbtn" href="dispute-resolution.html">분쟁 해결</a>
+        <a class="linkbtn" href="legal-consulting.html">법률 컨설팅</a>
+        <a class="linkbtn" href="investment-consulting.html">투자 컨설팅</a>
+        <a class="linkbtn" href="representation-practice.html">대리 업무</a>
+      </div>
+    </section>
+
+    <!-- 2) 대상 독자 — 연한 회홍 -->
+    <section class="card card-red">
+      <h2>이 사이트의 대상 독자</h2>
+      <p>이 사이트는 중국 관련 법적·상업적 사안을 다루는 외국 기업, 투자자, 개인, 사내 법무팀 및 해외 변호사를 위해 설계되었습니다.</p>
+    </section>
+
+    <!-- 3) 주요 내용 — 연한 회황 -->
+    <section class="card card-yellow">
+      <h2>이 사이트에서 찾을 수 있는 내용</h2>
+      <ul>
+        <li>중국 중재 및 소송에 관한 실무 가이드</li>
+        <li>계약서 및 분쟁 조항 작성 체크리스트</li>
+        <li>투자 및 거래 리스크 체크리스트</li>
+        <li>외국 당사자를 위한 절차 준비 노트</li>
+        <li>외국 당사자와 관련된 최신 법률 동향</li>
+      </ul>
+    </section>
+
+    <!-- 4) 최근 발행물 — 연한 회청 -->
+    <section class="card card-blue">
+      <div class="sectionhead">
+        <h2>최근 발행물</h2>
+        <a href="publications.html">모든 발행물 보기</a>
+      </div>
+      <ul class="pubs" id="recent-publications"><!-- JS로 채워짐 --></ul>
+      <p class="small" style="margin-top:10px;">다국어 버전: <a href="https://chinese.law/" style="color:#6b7280;">chinese.law</a>에서 영어·일본어·프랑스어·러시아어·스페인어로 이용 가능합니다.</p>
+    </section>
+
+    <section class="small">면책 고지: 이 웹사이트의 자료는 일반 정보 제공 목적으로만 제공되며 법률 자문을 구성하지 않습니다. 이 웹사이트를 열람하거나 연락하는 행위만으로 변호사-의뢰인 관계가 형성되지 않습니다.</section>
+
+  </div>
+
+  <!-- 메시지 모달 -->
+  <div class="modal-overlay" id="msgModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeMsgModal()" aria-label="닫기">&#215;</button>
+      <h3>메시지 남기기</h3>
+      <div id="msgFormWrap">
+        <form id="msgForm" action="https://formspree.io/f/mojyegeq" method="POST">
+          <label for="msgTitle">제목</label>
+          <input class="modal-field" id="msgTitle" type="text" name="title" placeholder="제목을 입력하세요" required />
+          <label for="msgEmail">이메일</label>
+          <input class="modal-field" id="msgEmail" type="email" name="email" placeholder="이메일 주소" required />
+          <label for="msgBody">질문 / 의견</label>
+          <textarea class="modal-field" id="msgBody" name="message" rows="5" placeholder="메시지를 입력하세요..." required></textarea>
+          <button class="modal-send" type="submit">보내기</button>
+        </form>
+      </div>
+      <div class="modal-success" id="msgSuccess" style="display:none;">
+        메시지가 전송되었습니다. 감사합니다!
+      </div>
+    </div>
+  </div>
+
+  <script src="articles-data.js"></script>
+  <script>
+    /* 최근 발행물 목록 */
+    (function(){
+      var list = document.getElementById("recent-publications");
+      if (!list) return;
+      var sorted = ARTICLES_DATA.slice().sort(function(a,b){ return b.date.localeCompare(a.date); });
+      var recent = sorted.slice(0, 10);
+      list.innerHTML = recent.map(function(a){
+        var title = (a.ko && a.ko.title) ? a.ko.title : a.en.title;
+        var url   = (a.ko && a.ko.title) ? ("articles/" + a.slug + ".html") : ("https://chinese.law/articles/" + a.slug + ".html");
+        return "<li><a class=\"pubtitle\" href=\"" + url + "\">" + title + "</a><div class=\"pubmeta\">" + a.date + "</div></li>";
+      }).join("");
+    })();
+
+    /* 모달 열기 / 닫기 */
+    function openMsgModal() {
+      document.getElementById("msgModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMsgModal() {
+      document.getElementById("msgModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById("msgModal")) closeMsgModal();
+    }
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeMsgModal();
+    });
+
+    /* 폼 제출 (페이지 이동 없이 AJAX) */
+    document.getElementById("msgForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      var btn = this.querySelector("button[type=submit]");
+      btn.disabled = true;
+      btn.textContent = "전송 중…";
+      fetch(this.action, {
+        method: "POST",
+        body: new FormData(this),
+        headers: { "Accept": "application/json" }
+      }).then(function(r) {
+        if (r.ok) {
+          document.getElementById("msgFormWrap").style.display = "none";
+          document.getElementById("msgSuccess").style.display = "block";
+        } else {
+          btn.disabled = false;
+          btn.textContent = "보내기";
+          alert("메시지 전송 중 오류가 발생했습니다. 다시 시도해 주세요.");
+        }
+      }).catch(function() {
+        btn.disabled = false;
+        btn.textContent = "보내기";
+        alert("메시지를 전송할 수 없습니다. 연결 상태를 확인해 주세요.");
+      });
+    });
+  </script>
 </body>
 </html>

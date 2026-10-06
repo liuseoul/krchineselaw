@@ -1,0 +1,8 @@
+{
+  "name": "chineselaw-kr",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "publish": "node scripts/publish.js"
+  }
+}

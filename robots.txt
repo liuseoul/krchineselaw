@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chineselaw.kr/sitemap.xml

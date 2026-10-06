@@ -1,0 +1,143 @@
+/**
+ * SINGLE SOURCE OF TRUTH for all articles.
+ * Managed automatically by: scripts/publish.js
+ *
+ * Each entry:
+ *   date  – YYYY-MM-DD
+ *   slug  – URL-safe identifier  (also the HTML filename stem)
+ *   en    – { title }   English title
+ *   ko/ja/fr/ru/es – { title } translated title, or null if not yet translated
+ *
+ * URL convention:
+ *   Korean articles live at  articles/{slug}.html  (this site)
+ *   Other languages live at  https://chinese.law/[lang/]articles/{slug}.html
+ */
+
+var ARTICLES_DATA = [
+  {
+    "date": "2026-05-23",
+    "slug": "chinas-legal-framework-for-exit-restrictions-on-foreign-nationals",
+    "tags": [
+      "China law",
+      "exit restrictions",
+      "foreign nationals",
+      "civil enforcement",
+      "criminal procedure",
+      "immigration",
+      "supervisory investigation"
+    ],
+    "en": {
+      "title": "China's Legal Framework for Exit Restrictions on Foreign Nationals"
+    },
+    "ko": {
+      "title": "중국의 외국인 출국제한 법률제도"
+    },
+    "ja": {
+      "title": "中国における外国人の出国制限法律制度"
+    },
+    "fr": {
+      "title": "Le régime juridique chinois de restriction de sortie du territoire pour les ressortissants étrangers"
+    },
+    "ru": {
+      "title": "Правовой режим ограничения выезда иностранных граждан из Китая"
+    },
+    "es": {
+      "title": "El régimen jurídico chino de restricción de salida del territorio para extranjeros"
+    }
+  },
+  {
+    "date": "2026-04-28",
+    "slug": "can-secret-recordings-be-used-as-evidence-in-chinese-litigation",
+    "tags": [
+      "China law",
+      "evidence",
+      "litigation",
+      "secret recordings",
+      "civil procedure",
+      "admissibility"
+    ],
+    "en": {
+      "title": "Can Secret Recordings Be Used as Evidence in Chinese Litigation?"
+    },
+    "ko": {
+      "title": "중국에서 몰래 한 녹음·녹화, 소송 증거로 쓸 수 있을까?"
+    },
+    "ja": {
+      "title": "中国における秘密録音・録画は訴訟証拠として認められるか"
+    },
+    "fr": {
+      "title": "Les enregistrements secrets peuvent-ils être utilisés comme preuves devant les tribunaux en Chine ?"
+    },
+    "ru": {
+      "title": "Могут ли тайные аудио- и видеозаписи служить доказательством в суде в Китае?"
+    },
+    "es": {
+      "title": "¿Pueden utilizarse como prueba judicial en China las grabaciones secretas?"
+    }
+  },
+  {
+    "date": "2026-04-17",
+    "slug": "division-of-property-in-china-after-a-court-divorce-obtained-by-a-foreign-couple",
+    "tags": [
+      "China law",
+      "divorce",
+      "property division",
+      "foreign nationals",
+      "family law",
+      "cross-border"
+    ],
+    "en": {
+      "title": "Division of Property in China After a Court Divorce Obtained by a Foreign Couple"
+    },
+    "ko": {
+      "title": "외국 국적 부부의 소송 이혼 후 중국 내 재산 분할 처리"
+    },
+    "ja": {
+      "title": "外国籍夫婦が訴訟離婚した後の中国国内財産分割の取り扱い"
+    },
+    "fr": {
+      "title": "Traitement du partage des biens situés en Chine après le divorce judiciaire d'un couple étranger"
+    },
+    "ru": {
+      "title": "Раздел имущества в Китае после расторжения брака иностранными гражданами в судебном порядке"
+    },
+    "es": {
+      "title": "Tratamiento de la división de bienes en China tras el divorcio judicial de un matrimonio extranjero"
+    }
+  },
+  {
+    "date": "2026-03-11",
+    "slug": "website-test-notice-and-upcoming-content-preview",
+    "en": {
+      "title": "Website Test Notice and Upcoming Content Preview"
+    },
+    "ko": {
+      "title": "웹사이트 테스트 공지 및 예정 콘텐츠 미리보기"
+    },
+    "ja": {
+      "title": "ウェブサイトテストのお知らせおよび今後のコンテンツ予告"
+    },
+    "fr": {
+      "title": "Avis de test du site Web et aperçu des contenus à venir"
+    },
+    "ru": {
+      "title": "Уведомление о тестировании веб-сайта и анонс предстоящих материалов"
+    },
+    "es": {
+      "title": "Aviso de prueba del sitio web y adelanto del contenido próximo"
+    }
+  }
+];
+
+/**
+ * LANG_META – display labels and URL paths for each language.
+ * ko is the current site; others link to chinese.law.
+ */
+var LANG_META = {
+  en: { label: "EN", name: "English",  homeUrl: "https://chinese.law/",    pubsUrl: "https://chinese.law/publications.html" },
+  ko: { label: "KR", name: "한국어",    homeUrl: "/index.html",             pubsUrl: "/publications.html" },
+  ja: { label: "JP", name: "日本語",    homeUrl: "https://chinese.law/ja/", pubsUrl: "https://chinese.law/ja/publications.html" },
+  fr: { label: "FR", name: "Français",  homeUrl: "https://chinese.law/fr/", pubsUrl: "https://chinese.law/fr/publications.html" },
+  ru: { label: "RU", name: "Русский",   homeUrl: "https://chinese.law/ru/", pubsUrl: "https://chinese.law/ru/publications.html" },
+  es: { label: "ES", name: "Español",   homeUrl: "https://chinese.law/es/", pubsUrl: "https://chinese.law/es/publications.html" },
+};
