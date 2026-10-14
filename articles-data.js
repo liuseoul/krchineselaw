@@ -18,12 +18,22 @@ var ARTICLES_DATA = [
     "date": "2026-10-14",
     "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-3-creditor-remedies-and-strategies-for-korean-companies",
     "tags": [
-      "China law",
-      "company law",
-      "shareholder capital contribution",
-      "creditor rights",
-      "Article 54 Company Law",
-      "Korean companies"
+      "중국 채권자 권리행사",
+      "집행절차 주주 추가",
+      "집행이의의 소",
+      "파산",
+      "법인격부인",
+      "종본재정",
+      "중국 회사법",
+      "신회사법 제54조",
+      "출자기한 도래 가속",
+      "인수제",
+      "주주 출자",
+      "중국 채권 회수",
+      "한국 기업",
+      "加速到期",
+      "认缴出资",
+      "China Company Law"
     ],
     "en": {
       "title": "Acceleration of Shareholder Capital Contributions in Chinese Companies (3): Practical Advice — Four Enforcement Routes for Creditors and Response Strategies for Korean Companies"
@@ -40,12 +50,21 @@ var ARTICLES_DATA = [
     "date": "2026-10-07",
     "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-2-article-54-of-the-new-company-law",
     "tags": [
-      "China law",
-      "company law",
-      "shareholder capital contribution",
-      "creditor rights",
-      "Article 54 Company Law",
-      "Korean companies"
+      "회사법 제54조 해석",
+      "출자 조기 납입",
+      "시간적 효력",
+      "불능변제",
+      "公司法第54条",
+      "중국 회사법",
+      "신회사법 제54조",
+      "출자기한 도래 가속",
+      "인수제",
+      "주주 출자",
+      "중국 채권 회수",
+      "한국 기업",
+      "加速到期",
+      "认缴出资",
+      "China Company Law"
     ],
     "en": {
       "title": "Acceleration of Shareholder Capital Contributions in Chinese Companies (2): Legal Interpretation — History, Requirements and Temporal Effect of Article 54 of the New Company Law"
@@ -62,12 +81,21 @@ var ARTICLES_DATA = [
     "date": "2026-09-30",
     "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-1-why-the-issue-exists",
     "tags": [
-      "China law",
-      "company law",
-      "shareholder capital contribution",
-      "creditor rights",
-      "Article 54 Company Law",
-      "Korean companies"
+      "한중 회사 자본제도 비교",
+      "납입자본",
+      "인수약정자본",
+      "전액납입주의",
+      "注册资本",
+      "중국 회사법",
+      "신회사법 제54조",
+      "출자기한 도래 가속",
+      "인수제",
+      "주주 출자",
+      "중국 채권 회수",
+      "한국 기업",
+      "加速到期",
+      "认缴出资",
+      "China Company Law"
     ],
     "en": {
       "title": "Acceleration of Shareholder Capital Contributions in Chinese Companies (1): Why the Issue Exists — From Paid-in Capital to Subscribed Capital"
