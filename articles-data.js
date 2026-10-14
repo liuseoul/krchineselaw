@@ -15,6 +15,72 @@
 
 var ARTICLES_DATA = [
   {
+    "date": "2026-10-14",
+    "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-3-creditor-remedies-and-strategies-for-korean-companies",
+    "tags": [
+      "China law",
+      "company law",
+      "shareholder capital contribution",
+      "creditor rights",
+      "Article 54 Company Law",
+      "Korean companies"
+    ],
+    "en": {
+      "title": "Acceleration of Shareholder Capital Contributions in Chinese Companies (3): Practical Advice — Four Enforcement Routes for Creditors and Response Strategies for Korean Companies"
+    },
+    "ko": {
+      "title": "중국 회사 주주출자 기한도래 가속 제도 (3): 실무 제언 — 채권자의 네 가지 권리행사 경로와 한국 기업의 대응 전략"
+    },
+    "ja": null,
+    "fr": null,
+    "ru": null,
+    "es": null
+  },
+  {
+    "date": "2026-10-07",
+    "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-2-article-54-of-the-new-company-law",
+    "tags": [
+      "China law",
+      "company law",
+      "shareholder capital contribution",
+      "creditor rights",
+      "Article 54 Company Law",
+      "Korean companies"
+    ],
+    "en": {
+      "title": "Acceleration of Shareholder Capital Contributions in Chinese Companies (2): Legal Interpretation — History, Requirements and Temporal Effect of Article 54 of the New Company Law"
+    },
+    "ko": {
+      "title": "중국 회사 주주출자 기한도래 가속 제도 (2): 법률 해석 — 「신회사법」 제54조의 연혁, 요건 및 시간적 효력"
+    },
+    "ja": null,
+    "fr": null,
+    "ru": null,
+    "es": null
+  },
+  {
+    "date": "2026-09-30",
+    "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-1-why-the-issue-exists",
+    "tags": [
+      "China law",
+      "company law",
+      "shareholder capital contribution",
+      "creditor rights",
+      "Article 54 Company Law",
+      "Korean companies"
+    ],
+    "en": {
+      "title": "Acceleration of Shareholder Capital Contributions in Chinese Companies (1): Why the Issue Exists — From Paid-in Capital to Subscribed Capital"
+    },
+    "ko": {
+      "title": "중국 회사 주주출자 기한도래 가속 제도 (1): 문제는 왜 존재하는가 — '납입자본'에서 '인수약정자본'으로"
+    },
+    "ja": null,
+    "fr": null,
+    "ru": null,
+    "es": null
+  },
+  {
     "date": "2026-05-23",
     "slug": "chinas-legal-framework-for-exit-restrictions-on-foreign-nationals",
     "tags": [

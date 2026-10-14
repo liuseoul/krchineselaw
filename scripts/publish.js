@@ -10,6 +10,7 @@
  *        YYYYMMDD-kr.txt
  *      Line 1:   Korean article title
  *      Line 2+:  Article body (blank line = paragraph break)
+ *      (or YYYYMMDD-kr.md: Markdown with front matter `title: "..."`)
  *
  *   2. Keep articles-data.js in sync with chinese.law/articles-data.js
  *      (so language-switcher links to other languages work correctly).
@@ -76,6 +77,87 @@ function parseTxt(filePath) {
   let description = paragraphs[0] || title;
   if (description.length > 155) description = description.slice(0, 152) + "...";
   return { title, bodyHtml, description };
+}
+
+function esc(str) {
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function inlineMd(text) {
+  return esc(text)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\s][^*]*?)\*(?!\*)/g, "$1<em>$2</em>");
+}
+
+/** Minimal Markdown → HTML (headings, quotes, hr, tables, 2-level lists, bold/italic/code) */
+function mdToHtml(md) {
+  const lines = md.split("\n");
+  const out = [];
+  const LI = /^(\d+\.|[-*])\s+/;
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    let m;
+    if (!line.trim()) { i++; continue; }
+    if (/^-{3,}\s*$/.test(line)) { out.push("<hr />"); i++; continue; }
+    if ((m = line.match(/^(#{1,6})\s+(.*)$/))) {
+      const lv = Math.max(m[1].length, 2); // page h1 is the article title
+      out.push(`<h${lv}>${inlineMd(m[2])}</h${lv}>`); i++; continue;
+    }
+    if (/^>/.test(line)) {
+      const q = [];
+      while (i < lines.length && /^>/.test(lines[i])) q.push(lines[i++].replace(/^>\s?/, ""));
+      out.push(`<blockquote>${q.map(inlineMd).join("<br />\n")}</blockquote>`); continue;
+    }
+    if (/^\|/.test(line)) {
+      const rows = [];
+      while (i < lines.length && /^\|/.test(lines[i])) rows.push(lines[i++]);
+      const cells = r => r.replace(/^\||\|\s*$/g, "").split("|").map(c => c.trim());
+      const head = cells(rows[0]);
+      const body = rows.slice(/^\|[\s:|-]+\|?\s*$/.test(rows[1] || "") ? 2 : 1).map(cells);
+      out.push('<div class="tablewrap"><table>\n<thead><tr>' + head.map(c => `<th>${inlineMd(c)}</th>`).join("") +
+        "</tr></thead>\n<tbody>\n" +
+        body.map(r => "<tr>" + r.map(c => `<td>${inlineMd(c)}</td>`).join("") + "</tr>").join("\n") +
+        "\n</tbody></table></div>");
+      continue;
+    }
+    if (LI.test(line)) {
+      const tag = /^\d+\./.test(line) ? "ol" : "ul";
+      const items = [];
+      while (i < lines.length && (LI.test(lines[i]) || /^\s+[-*]\s+/.test(lines[i]))) {
+        const l = lines[i++];
+        if (/^\s+[-*]\s+/.test(l) && items.length) items[items.length - 1].sub.push(l.replace(/^\s+[-*]\s+/, ""));
+        else items.push({ text: l.replace(LI, ""), sub: [] });
+      }
+      out.push(`<${tag}>\n` + items.map(it => `<li>${inlineMd(it.text)}` +
+        (it.sub.length ? "\n<ul>\n" + it.sub.map(s => `<li>${inlineMd(s)}</li>`).join("\n") + "\n</ul>\n" : "") +
+        "</li>").join("\n") + `\n</${tag}>`);
+      continue;
+    }
+    const para = [];
+    while (i < lines.length && lines[i].trim() && !/^(#{1,6}\s|>|\||-{3,}\s*$)/.test(lines[i]) && !LI.test(lines[i])) para.push(lines[i++]);
+    out.push(`<p>${inlineMd(para.join(" "))}</p>`);
+  }
+  return out.join("\n    ");
+}
+
+/** Parse a Markdown file with optional front matter → { title, bodyHtml, description } */
+function parseMd(filePath) {
+  let raw = fs.readFileSync(filePath, "utf8").replace(/\r\n/g, "\n");
+  let title = "";
+  const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
+  if (fm) {
+    const t = fm[1].match(/^title:\s*"?(.*?)"?\s*$/m);
+    if (t) title = t[1];
+    raw = raw.slice(fm[0].length);
+  }
+  // drop the leading "# …" / "## …" heading lines (the page template renders the title as h1)
+  raw = raw.replace(/^\s*#\s+.*\n+(##\s+.*\n+)?/, "");
+  const paras = raw.split(/\n{2,}/).map(p => p.trim()).filter(p => p && !/^(>|#|-{3,}|\|)/.test(p));
+  let description = (paras[0] || title).replace(/\*\*|\*/g, "").replace(/\n/g, " ");
+  if (description.length > 155) description = description.slice(0, 152) + "...";
+  return { title, bodyHtml: mdToHtml(raw.trim()), description };
 }
 
 function loadArticlesData() {
@@ -153,6 +235,17 @@ ${jsonLdStr}
     h1{font-size:1.7rem;margin:0 0 12px 0;line-height:1.3;}
     .pubmeta{font-size:0.9rem;color:#6b7280;margin-bottom:20px;}
     .article-body p{margin:0 0 1.1em 0;}
+    .article-body h2{font-size:1.35rem;margin:1.8em 0 0.6em;line-height:1.35;}
+    .article-body h3{font-size:1.12rem;margin:1.5em 0 0.5em;line-height:1.4;}
+    .article-body h4{font-size:1rem;margin:1.3em 0 0.4em;}
+    .article-body blockquote{margin:1em 0;padding:10px 16px;background:#f3f4f6;border-left:3px solid #9ca3af;border-radius:0 6px 6px 0;color:#374151;}
+    .article-body ul,.article-body ol{margin:0 0 1.1em 0;padding-left:1.5em;}
+    .article-body li{margin-bottom:0.4em;}
+    .article-body hr{border:none;border-top:1px solid #e5e7eb;margin:1.8em 0;}
+    .article-body .tablewrap{overflow-x:auto;margin:0 0 1.2em;}
+    .article-body table{border-collapse:collapse;width:100%;font-size:0.93rem;}
+    .article-body th,.article-body td{border:1px solid #d1d5db;padding:8px 10px;text-align:left;vertical-align:top;}
+    .article-body th{background:#f3f4f6;}
     .backlink{display:inline-block;margin-bottom:14px;color:#374151;text-decoration:none;font-size:0.95rem;}
     .backlink:hover{text-decoration:underline;}
     .small{font-size:0.9rem;color:#6b7280;margin-top:20px;}
@@ -201,7 +294,7 @@ ${urls.join("\n")}
 
 function main() {
   // Scan articles-src/ for *-kr.txt files
-  const PATTERN = /^(\d{8})-kr\.txt$/i;
+  const PATTERN = /^(\d{8})-kr\.(?:txt|md)$/i;
   const allFiles = fs.readdirSync(SRC_DIR).filter(f => PATTERN.test(f));
 
   if (allFiles.length === 0) {
@@ -236,7 +329,7 @@ function main() {
     console.log(`\n── ${date} ── ${path.basename(filePath)}`);
     console.log(`  Entry: "${entry.ko ? entry.ko.title : "(no Korean title in data)"}" (slug: ${entry.slug})`);
 
-    const { title, bodyHtml, description } = parseTxt(filePath);
+    const { title, bodyHtml, description } = /\.md$/i.test(filePath) ? parseMd(filePath) : parseTxt(filePath);
     entry.ko = { title };
 
     fs.writeFileSync(
