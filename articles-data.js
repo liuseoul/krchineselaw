@@ -15,6 +15,60 @@
 
 var ARTICLES_DATA = [
   {
+    "date": "2026-10-15",
+    "slug": "tax-treatment-of-china-property-allocated-to-one-spouse-after-korea-china-cross-border-divorce",
+    "src": "divorce-property",
+    "tags": [
+      "한중 국제이혼",
+      "중국 부동산 재산분할",
+      "이혼 재산분할 세금",
+      "중국 주택 계세 면제",
+      "이혼 후 부동산 명의 이전",
+      "중국 부동산 양도소득세",
+      "外籍离婚房产",
+      "离婚析产 契税",
+      "China divorce property tax"
+    ],
+    "en": {
+      "title": "Tax Treatment When a Property in China Is Allocated to One Spouse After a Korea–China Cross-Border Divorce"
+    },
+    "ko": {
+      "title": "한·중 국제이혼 후 중국 소재 부동산을 일방에게 귀속시키는 경우의 세무 처리"
+    },
+    "ja": null,
+    "fr": null,
+    "ru": null,
+    "es": null
+  },
+  {
+    "date": "2026-10-15",
+    "slug": "korean-father-zero-price-transfer-of-chinese-company-equity-to-child-tax-analysis",
+    "src": "equity-gift",
+    "tags": [
+      "중국 법인 지분 증여",
+      "0원 양도",
+      "한국 증여세",
+      "중국 개인소득세",
+      "국외재산 증여",
+      "해외직접투자 신고",
+      "한중 세무",
+      "股权0元转让",
+      "近亲属股权转让",
+      "67号公告",
+      "China equity gift tax Korea"
+    ],
+    "en": {
+      "title": "Tax Analysis of a Korean Father's Zero-Price Transfer of a Chinese Company's Equity to His Child (China and Korea)"
+    },
+    "ko": {
+      "title": "한국인 부친이 중국 법인 지분을 자녀에게 0원에 양도하는 경우의 한·중 세무 분석"
+    },
+    "ja": null,
+    "fr": null,
+    "ru": null,
+    "es": null
+  },
+  {
     "date": "2026-10-14",
     "slug": "acceleration-of-shareholder-capital-contributions-in-chinese-companies-part-3-creditor-remedies-and-strategies-for-korean-companies",
     "tags": [

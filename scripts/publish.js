@@ -86,6 +86,7 @@ function esc(str) {
 function inlineMd(text) {
   return esc(text)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener nofollow">$1</a>')
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/(^|[^*])\*([^*\s][^*]*?)\*(?!\*)/g, "$1<em>$2</em>");
 }
@@ -294,7 +295,9 @@ ${urls.join("\n")}
 
 function main() {
   // Scan articles-src/ for *-kr.txt files
-  const PATTERN = /^(\d{8})-kr\.(?:txt|md)$/i;
+  // YYYYMMDD-kr.ext, or YYYYMMDD-<key>-kr.ext when several articles share a date
+  // (<key> must equal the "src" field of the matching entry in articles-data.js)
+  const PATTERN = /^(\d{8})(?:-([a-z0-9-]+))?-kr\.(?:txt|md)$/i;
   const allFiles = fs.readdirSync(SRC_DIR).filter(f => PATTERN.test(f));
 
   if (allFiles.length === 0) {
@@ -304,22 +307,24 @@ function main() {
 
   const groups = {};
   for (const f of allFiles) {
-    const [, yyyymmdd] = f.match(PATTERN);
-    groups[yyyymmdd] = path.join(SRC_DIR, f);
+    const [, yyyymmdd, key] = f.match(PATTERN);
+    groups[key ? `${yyyymmdd}-${key}` : yyyymmdd] = path.join(SRC_DIR, f);
   }
 
   const articles = loadArticlesData();
   const byDate = {};
-  for (const a of articles) byDate[a.date] = a;
+  for (const a of articles) if (!a.src) byDate[a.date] = a;
+  const bySrc = {};
+  for (const a of articles) if (a.src) bySrc[`${a.date.replace(/-/g, "")}-${a.src}`] = a;
 
   let anyChanges = false;
   const articleDir = path.join(ROOT, "articles");
   fs.mkdirSync(articleDir, { recursive: true });
 
-  for (const yyyymmdd of Object.keys(groups).sort()) {
-    const filePath = groups[yyyymmdd];
-    const date     = isoDate(yyyymmdd);
-    const entry    = byDate[date];
+  for (const gkey of Object.keys(groups).sort()) {
+    const filePath = groups[gkey];
+    const date     = isoDate(gkey.slice(0, 8));
+    const entry    = gkey.length > 8 ? bySrc[gkey] : byDate[date];
 
     if (!entry) {
       console.warn(`  ✗ ${date} — no matching entry in articles-data.js; skipping.`);
