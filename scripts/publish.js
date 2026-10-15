@@ -33,7 +33,7 @@ const SITE_URL  = "https://chineselaw.kr";
 
 const SITE_TITLE_KO = "중국 법률 실무 지식 베이스";
 const DISCLAIMER_KO = "면책 고지: 이 웹사이트의 자료는 일반 정보 제공 목적으로만 제공되며 법률 자문을 구성하지 않습니다. 이 웹사이트를 열람하거나 연락하는 행위만으로 변호사-의뢰인 관계가 형성되지 않습니다.";
-const CONTACT_NOTICE_KO = "本网站内容由BEIJING DEHENG LAW OFFICES韩国业务团队发表，如有咨询、业务联系等事项，请联系dehengkr[at]protonmail.com";
+const CONTACT_NOTICE_KO = "본 웹사이트의 게재 내용은 BEIJING DEHENG LAW OFFICES 한국업무팀이 작성·발표한 것입니다. 법률 자문, 업무 의뢰 등 문의 사항은 dehengkr[at]protonmail.com으로 연락하여 주시기 바랍니다.";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
